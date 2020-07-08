@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Kickstarter Model</title>
+  <style>
+h1 {text-align: center; font-family:"Arial Rounded MT Bold"; font-size: 2.6em;}
+h2 {text-align: center; font-family:courier; font-size: 1.5em;}
+h3 {text-align: center; font-family:courier; font-size: 1.6em;}
+h5 {text-align: center; font-family:courier; font-size: .83em;}
+p {text-align: center; font-family:courier; font-size: 0.975em;}
+
+
+</style>
+
+</head>
+
+<body style="background-color:	#F08080;">
+
+  <h1>Will your project succeed on <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kickstarter_logo.svg/2000px-Kickstarter_logo.svg.png"
+  alt="Kickstarter logo" height="28" width="240"/> ?</h1>
+  <!-- <p>Fill in info about your project to below</p> -->
+
+  <!-- Project Goal -->
+  <form action="/">
+
+    {% for f in feature_names[:3] %}
+        <br>
+       <div><p style="text-align:middle;">{{ f }}</p><p style="text-align:middle; float:middle;"><input  type="text" name="{{ f }}" value="0"></p></div>
+    {% endfor %}
+    <br>
+
+        <p>{{ feature_names[3] }}</p>
+      <p><input type="radio" name="{{ feature_names[3] }}" value="1" checked> Yes
+      <input type="radio" name="{{ feature_names[3] }}" value="0"> No<br></p>
+    <br>
+
+    <p>Pick category of your project</p>
+    <p><select id = 'options' name="category" method="GET" action="/">
+    {% for category in categories %}
+        <option value="{{category}}">{{category}}</option>"
+    {% endfor %}
+  </select></p>
+
+  <br>
+
+    <p><input type="submit" value="Submit" method="get"></p>
+
+
+  </form>
+
+    {% if x_input[0]==0 %}
+      <h2>Fill out information about your project above.</h2>
+    {% else %}
+      <h2>You project is <span style="color: #00FA9A">{{ prediction|safe}}</span> likely to succeed.</h2>
+    {% endif%}
+
+
+
+    {% if x_input[0]==0 %}
+      <h2></h2>
+    {% else %}
+      <h2>If it gets "Projects We Love"  tag, your chances rise to <span style="color: #00FA9A">{{ prediction_sp|safe}}</span>!</h2>
+    {% endif%}
+
+
+
+
+</body>
+
+
+</html>

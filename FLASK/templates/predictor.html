@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <!-- KCT TEAM TRAVEL DELAY-->
+	<head>
+    <title>KCT TEAM KICK PREDICT</title>
+    <style>
+      body {
+        background-color: #000000;
+      }
+    </style>
+  </head>
+   <body>
+	<p></p>
+		<p><img src="/static/images/kctdeploylogos.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;" width="200" height="60" /></p>
+
+		<h3 style="color: #4485b8; text-align: center;"><span style="color: #99ccff;">KCT KICK PREDICT</span></h3>
+		<!--<p><span style="color: #99ccff;"><strong>&nbsp;</strong></span></p>-->
+  <h4 style = "color: #4485b8; text-align: center;">Let's see if your project will make it in a KICK!!!</h4>
+ <!-- <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kickstarter_logo.svg/2000px-Kickstarter_logo.svg.png" alt=""
+				style="display: block; margin-left: auto; margin-right: auto;" width="80" height="20" /></p>-->
+ <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kickstarter_logo.svg/2000px-Kickstarter_logo.svg.png"-->
+  <!--alt="Kickstarter logo" height="28" width="240"/> ?</h1> -->
+  <!-- <p>Fill in info about your project to below</p> -->
+
+  <!-- Project Goal -->
+  <form action="/">
+
+    {% for f in feature_names[:3] %}
+	<!--INPUT type="text" STYLE="color: #FFFFFF; font-family: Verdana; font-weight: bold; font-size: 12px; background-color: #72A4D2;" size="10" maxlength="30"-->
+		<div><p style = "color: #4485b8; text-align: center;">{{ f }}</p><p style = "color: #4485b8; text-align: center;"><input  type="text"
+		style="color: #FFFFFF; font-family: Verdana; font-weight: bold; font-size: 12px; background-color: #72A4D2;" size="10" maxlength="30" name="{{ f }}" value="0"></p></div>
+    {% endfor %}
+
+    <!--<p style = "color: #4485b8; text-align: center;">{{ feature_names[3] }} Is it your first kick?</p>-->
+	 <p style = "color: #4485b8; text-align: center;">{{ feature_names[3] }}</p>
+      <p style = "color: #4485b8; text-align: center;"><input type="radio" name="{{ feature_names[3] }}" value="1" checked> Yes
+          <input type="radio" name="{{ feature_names[3] }}" value="0"> No</p>
+
+    <p style = "color: #4485b8; text-align: center;">Please pick the category of your kick</p>
+		<p style = "color: #4485b8; text-align: center;"><select id = 'options' name="category" method="GET" action="/">
+    {% for category in categories %}
+        <option style = "color: #4485b8;" value="{{category}}">{{category}}</option>"
+    {% endfor %}
+  </select></p>
+  <br>
+    <p style = "color: #4485b8; text-align: center;"><input type="submit" value="Submit" method="get"></p>
+
+  </form>
+    {% if x_input[0]==0 %}
+      <h3 style = "color: #4485b8; text-align: center;">#### Your Prediction will display here ####</h3>
+    {% else %}
+      <h3 style = "color: #4485b8; text-align: center;">You project is <span style="color: #00FA9A; text-align: center;">{{ prediction|safe}}</span> likely to succeed.</h3>
+    {% endif%}
+
+    {% if x_input[0]==0 %}
+      <h3 style = "color: #4485b8; text-align: center;"></h3>
+    {% else %}
+      <h3 style = "color: #4485b8; text-align: center;">If it gets "Projects We Love"  tag, your chances rise to <span style="color: #00FA9A; text-align: center;">{{ prediction_sp|safe}}</span>!</h3>
+    {% endif%}
+
+
+
+
+</body>
+
+
+</html>
