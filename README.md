@@ -10,3 +10,6 @@ First thing that needs to get done:
 2. Need to part of the dataset and turn 80% into the training and 20% into the testing
   a. for servals
   b. for cats
+
+Used a lot of references from this website:
+https://www.tensorflow.org/tutorials/load_data/images
